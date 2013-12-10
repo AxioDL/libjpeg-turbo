@@ -704,6 +704,12 @@ struct jpeg_decompress_struct {
   struct jpeg_upsampler * upsample;
   struct jpeg_color_deconverter * cconvert;
   struct jpeg_color_quantizer * cquantize;
+    
+#define NINTENDO_THP_STREAM 1
+#if NINTENDO_THP_STREAM
+  int NINTENDO_THP_FLAG;
+#endif
+    
 };
 
 

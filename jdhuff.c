@@ -291,6 +291,7 @@ jpeg_make_d_derived_tbl (j_decompress_ptr cinfo, boolean isDC, int tblno,
 #define MIN_GET_BITS  (BIT_BUF_SIZE-7)
 #endif
 
+#define NINTENDO_THP_STREAM 1
 
 GLOBAL(boolean)
 jpeg_fill_bit_buffer (bitread_working_state * state,
@@ -322,6 +323,9 @@ jpeg_fill_bit_buffer (bitread_working_state * state,
       c = GETJOCTET(*next_input_byte++);
 
       /* If it's 0xFF, check and discard stuffed zero byte */
+#if NINTENDO_THP_STREAM
+      if (!cinfo->NINTENDO_THP_FLAG) {
+#endif
       if (c == 0xFF) {
 	/* Loop here to discard any padding FF's on terminating marker,
 	 * so that we can save a valid unread_marker value.  NOTE: we will
@@ -356,6 +360,9 @@ jpeg_fill_bit_buffer (bitread_working_state * state,
 	  goto no_more_bytes;
 	}
       }
+#if NINTENDO_THP_STREAM
+      }
+#endif
 
       /* OK, load c into get_buffer */
       get_buffer = (get_buffer << 8) | c;

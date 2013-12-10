@@ -102,6 +102,8 @@ get_byte (j_decompress_ptr cinfo)
  * derived from Markus Kuhn's JBIG implementation.
  */
 
+#define NINTENDO_THP_STREAM 1
+
 LOCAL(int)
 arith_decode (j_decompress_ptr cinfo, unsigned char *st)
 {
@@ -118,6 +120,9 @@ arith_decode (j_decompress_ptr cinfo, unsigned char *st)
 	data = 0;		/* stuff zero data */
       else {
 	data = get_byte(cinfo);	/* read next input byte */
+#if NINTENDO_THP_STREAM
+        if (!cinfo->NINTENDO_THP_FLAG) {
+#endif
 	if (data == 0xFF) {	/* zero stuff or marker code */
 	  do data = get_byte(cinfo);
 	  while (data == 0xFF);	/* swallow extra 0xFF bytes */
@@ -134,6 +139,9 @@ arith_decode (j_decompress_ptr cinfo, unsigned char *st)
 	    data = 0;
 	  }
 	}
+#if NINTENDO_THP_STREAM
+        }
+#endif
       }
       e->c = (e->c << 8) | data; /* insert data into C register */
       if ((e->ct += 8) < 0)	 /* update bit shift counter */

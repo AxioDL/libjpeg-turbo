@@ -314,6 +314,9 @@ consume_markers (j_decompress_ptr cinfo)
 
   switch (val) {
   case JPEG_REACHED_SOS:	/* Found SOS */
+#if NINTENDO_THP_STREAM
+    cinfo->NINTENDO_THP_FLAG = 1;
+#endif
     if (inputctl->inheaders) {	/* 1st SOS */
       initial_setup(cinfo);
       inputctl->inheaders = FALSE;
@@ -328,6 +331,9 @@ consume_markers (j_decompress_ptr cinfo)
     }
     break;
   case JPEG_REACHED_EOI:	/* Found EOI */
+#if NINTENDO_THP_STREAM
+    cinfo->NINTENDO_THP_FLAG = 0;
+#endif
     inputctl->pub.eoi_reached = TRUE;
     if (inputctl->inheaders) {	/* Tables-only datastream, apparently */
       if (cinfo->marker->saw_SOF)
