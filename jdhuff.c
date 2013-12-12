@@ -291,8 +291,6 @@ jpeg_make_d_derived_tbl (j_decompress_ptr cinfo, boolean isDC, int tblno,
 #define MIN_GET_BITS  (BIT_BUF_SIZE-7)
 #endif
 
-#define NINTENDO_THP_STREAM 1
-
 GLOBAL(boolean)
 jpeg_fill_bit_buffer (bitread_working_state * state,
 		      register bit_buf_type get_buffer, register int bits_left,
@@ -323,9 +321,7 @@ jpeg_fill_bit_buffer (bitread_working_state * state,
       c = GETJOCTET(*next_input_byte++);
 
       /* If it's 0xFF, check and discard stuffed zero byte */
-#if NINTENDO_THP_STREAM
-      if (!cinfo->NINTENDO_THP_FLAG) {
-#endif
+#if !NINTENDO_THP_STREAM
       if (c == 0xFF) {
 	/* Loop here to discard any padding FF's on terminating marker,
 	 * so that we can save a valid unread_marker value.  NOTE: we will
@@ -359,8 +355,6 @@ jpeg_fill_bit_buffer (bitread_working_state * state,
 	  /* See if we need to insert some fake zero bits. */
 	  goto no_more_bytes;
 	}
-      }
-#if NINTENDO_THP_STREAM
       }
 #endif
 
@@ -404,6 +398,17 @@ jpeg_fill_bit_buffer (bitread_working_state * state,
    handle markers.  We have to hand off any blocks with markers to the
    slower routines. */
 
+#if NINTENDO_THP_STREAM
+#define GET_BYTE \
+{ \
+  register int c0, c1; \
+  c0 = GETJOCTET(*buffer++); \
+  c1 = GETJOCTET(*buffer); \
+  /* Pre-execute most common case */ \
+  get_buffer = (get_buffer << 8) | c0; \
+  bits_left += 8; \
+}
+#else
 #define GET_BYTE \
 { \
   register int c0, c1; \
@@ -424,6 +429,7 @@ jpeg_fill_bit_buffer (bitread_working_state * state,
     } \
   } \
 }
+#endif
 
 #if __WORDSIZE == 64 || defined(_WIN64)
 

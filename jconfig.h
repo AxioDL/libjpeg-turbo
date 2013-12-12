@@ -7,6 +7,9 @@
 /* libjpeg-turbo version */
 #define LIBJPEG_TURBO_VERSION 1.3.0
 
+/* RWK Nintendo THP fork */
+#define NINTENDO_THP_STREAM 1
+
 /* Support arithmetic encoding */
 #define C_ARITH_CODING_SUPPORTED 1
 
