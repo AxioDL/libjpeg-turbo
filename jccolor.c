@@ -85,7 +85,7 @@ typedef my_color_converter * my_cconvert_ptr;
 
 /* Include inline routines for colorspace extensions */
 
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -98,7 +98,7 @@ typedef my_color_converter * my_cconvert_ptr;
 #define rgb_ycc_convert_internal extrgb_ycc_convert_internal
 #define rgb_gray_convert_internal extrgb_gray_convert_internal
 #define rgb_rgb_convert_internal extrgb_rgb_convert_internal
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -114,7 +114,7 @@ typedef my_color_converter * my_cconvert_ptr;
 #define rgb_ycc_convert_internal extrgbx_ycc_convert_internal
 #define rgb_gray_convert_internal extrgbx_gray_convert_internal
 #define rgb_rgb_convert_internal extrgbx_rgb_convert_internal
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -130,7 +130,7 @@ typedef my_color_converter * my_cconvert_ptr;
 #define rgb_ycc_convert_internal extbgr_ycc_convert_internal
 #define rgb_gray_convert_internal extbgr_gray_convert_internal
 #define rgb_rgb_convert_internal extbgr_rgb_convert_internal
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -146,7 +146,7 @@ typedef my_color_converter * my_cconvert_ptr;
 #define rgb_ycc_convert_internal extbgrx_ycc_convert_internal
 #define rgb_gray_convert_internal extbgrx_gray_convert_internal
 #define rgb_rgb_convert_internal extbgrx_rgb_convert_internal
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -162,7 +162,7 @@ typedef my_color_converter * my_cconvert_ptr;
 #define rgb_ycc_convert_internal extxbgr_ycc_convert_internal
 #define rgb_gray_convert_internal extxbgr_gray_convert_internal
 #define rgb_rgb_convert_internal extxbgr_rgb_convert_internal
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -178,7 +178,7 @@ typedef my_color_converter * my_cconvert_ptr;
 #define rgb_ycc_convert_internal extxrgb_ycc_convert_internal
 #define rgb_gray_convert_internal extxrgb_gray_convert_internal
 #define rgb_rgb_convert_internal extxrgb_rgb_convert_internal
-#include "jccolext.c"
+#include "jccolext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE

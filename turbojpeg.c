@@ -612,9 +612,9 @@ DLLEXPORT int DLLCALL tjCompress2(tjhandle handle, unsigned char *srcBuf,
 	cinfo->image_width=width;
 	cinfo->image_height=height;
 
-	if(flags&TJFLAG_FORCEMMX) putenv("JSIMD_FORCEMMX=1");
-	else if(flags&TJFLAG_FORCESSE) putenv("JSIMD_FORCESSE=1");
-	else if(flags&TJFLAG_FORCESSE2) putenv("JSIMD_FORCESSE2=1");
+	if(flags&TJFLAG_FORCEMMX) _putenv("JSIMD_FORCEMMX=1");
+	else if(flags&TJFLAG_FORCESSE) _putenv("JSIMD_FORCESSE=1");
+	else if(flags&TJFLAG_FORCESSE2) _putenv("JSIMD_FORCESSE2=1");
 
 	if(flags&TJFLAG_NOREALLOC)
 	{
@@ -723,9 +723,9 @@ DLLEXPORT int DLLCALL tjEncodeYUV2(tjhandle handle, unsigned char *srcBuf,
 	cinfo->image_width=width;
 	cinfo->image_height=height;
 
-	if(flags&TJFLAG_FORCEMMX) putenv("JSIMD_FORCEMMX=1");
-	else if(flags&TJFLAG_FORCESSE) putenv("JSIMD_FORCESSE=1");
-	else if(flags&TJFLAG_FORCESSE2) putenv("JSIMD_FORCESSE2=1");
+	if(flags&TJFLAG_FORCEMMX) _putenv("JSIMD_FORCEMMX=1");
+	else if(flags&TJFLAG_FORCESSE) _putenv("JSIMD_FORCESSE=1");
+	else if(flags&TJFLAG_FORCESSE2) _putenv("JSIMD_FORCESSE2=1");
 
 	yuvsize=tjBufSizeYUV(width, height, subsamp);
 	jpeg_mem_dest_tj(cinfo, &dstBuf, &yuvsize, 0);
@@ -945,9 +945,9 @@ DLLEXPORT int DLLCALL tjDecompress2(tjhandle handle, unsigned char *jpegBuf,
 		|| height<0 || pixelFormat<0 || pixelFormat>=TJ_NUMPF)
 		_throw("tjDecompress2(): Invalid argument");
 
-	if(flags&TJFLAG_FORCEMMX) putenv("JSIMD_FORCEMMX=1");
-	else if(flags&TJFLAG_FORCESSE) putenv("JSIMD_FORCESSE=1");
-	else if(flags&TJFLAG_FORCESSE2) putenv("JSIMD_FORCESSE2=1");
+	if(flags&TJFLAG_FORCEMMX) _putenv("JSIMD_FORCEMMX=1");
+	else if(flags&TJFLAG_FORCESSE) _putenv("JSIMD_FORCESSE=1");
+	else if(flags&TJFLAG_FORCESSE2) _putenv("JSIMD_FORCESSE2=1");
 
 	if(setjmp(this->jerr.setjmp_buffer))
 	{
@@ -1060,9 +1060,9 @@ DLLEXPORT int DLLCALL tjDecompressToYUV(tjhandle handle,
 	if(jpegBuf==NULL || jpegSize<=0 || dstBuf==NULL)
 		_throw("tjDecompressToYUV(): Invalid argument");
 
-	if(flags&TJFLAG_FORCEMMX) putenv("JSIMD_FORCEMMX=1");
-	else if(flags&TJFLAG_FORCESSE) putenv("JSIMD_FORCESSE=1");
-	else if(flags&TJFLAG_FORCESSE2) putenv("JSIMD_FORCESSE2=1");
+	if(flags&TJFLAG_FORCEMMX) _putenv("JSIMD_FORCEMMX=1");
+	else if(flags&TJFLAG_FORCESSE) _putenv("JSIMD_FORCESSE=1");
+	else if(flags&TJFLAG_FORCESSE2) _putenv("JSIMD_FORCESSE2=1");
 
 	if(setjmp(this->jerr.setjmp_buffer))
 	{
@@ -1191,9 +1191,9 @@ DLLEXPORT int DLLCALL tjTransform(tjhandle handle, unsigned char *jpegBuf,
 		|| t==NULL || flags<0)
 		_throw("tjTransform(): Invalid argument");
 
-	if(flags&TJFLAG_FORCEMMX) putenv("JSIMD_FORCEMMX=1");
-	else if(flags&TJFLAG_FORCESSE) putenv("JSIMD_FORCESSE=1");
-	else if(flags&TJFLAG_FORCESSE2) putenv("JSIMD_FORCESSE2=1");
+	if(flags&TJFLAG_FORCEMMX) _putenv("JSIMD_FORCEMMX=1");
+	else if(flags&TJFLAG_FORCESSE) _putenv("JSIMD_FORCESSE=1");
+	else if(flags&TJFLAG_FORCESSE2) _putenv("JSIMD_FORCESSE2=1");
 
 	if(setjmp(this->jerr.setjmp_buffer))
 	{

@@ -81,7 +81,7 @@ typedef my_upsampler * my_upsample_ptr;
 
 /* Include inline routines for colorspace extensions */
 
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -93,7 +93,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define RGB_PIXELSIZE EXT_RGB_PIXELSIZE
 #define h2v1_merged_upsample_internal extrgb_h2v1_merged_upsample_internal
 #define h2v2_merged_upsample_internal extrgb_h2v2_merged_upsample_internal
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -108,7 +108,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define RGB_PIXELSIZE EXT_RGBX_PIXELSIZE
 #define h2v1_merged_upsample_internal extrgbx_h2v1_merged_upsample_internal
 #define h2v2_merged_upsample_internal extrgbx_h2v2_merged_upsample_internal
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -123,7 +123,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define RGB_PIXELSIZE EXT_BGR_PIXELSIZE
 #define h2v1_merged_upsample_internal extbgr_h2v1_merged_upsample_internal
 #define h2v2_merged_upsample_internal extbgr_h2v2_merged_upsample_internal
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -138,7 +138,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define RGB_PIXELSIZE EXT_BGRX_PIXELSIZE
 #define h2v1_merged_upsample_internal extbgrx_h2v1_merged_upsample_internal
 #define h2v2_merged_upsample_internal extbgrx_h2v2_merged_upsample_internal
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -154,7 +154,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define RGB_PIXELSIZE EXT_XBGR_PIXELSIZE
 #define h2v1_merged_upsample_internal extxbgr_h2v1_merged_upsample_internal
 #define h2v2_merged_upsample_internal extxbgr_h2v2_merged_upsample_internal
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE
@@ -170,7 +170,7 @@ typedef my_upsampler * my_upsample_ptr;
 #define RGB_PIXELSIZE EXT_XRGB_PIXELSIZE
 #define h2v1_merged_upsample_internal extxrgb_h2v1_merged_upsample_internal
 #define h2v2_merged_upsample_internal extxrgb_h2v2_merged_upsample_internal
-#include "jdmrgext.c"
+#include "jdmrgext.h"
 #undef RGB_RED
 #undef RGB_GREEN
 #undef RGB_BLUE

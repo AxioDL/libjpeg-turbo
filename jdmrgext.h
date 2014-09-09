@@ -18,6 +18,14 @@
  * Upsample and color convert for the case of 2:1 horizontal and 1:1 vertical.
  */
 
+#ifndef INLINE
+#define INLINE __inline
+#endif
+
+#ifndef LOCAL
+#define LOCAL(type) static type
+#endif
+
 INLINE
 LOCAL(void)
 h2v1_merged_upsample_internal (j_decompress_ptr cinfo,

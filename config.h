@@ -65,7 +65,11 @@
 /* #undef INCOMPLETE_TYPES_BROKEN */
 
 /* How to obtain function inlining. */
+#if _WIN32
+#define INLINE __inline
+#else
 #define INLINE __attribute__((always_inline))
+#endif
 
 /* libjpeg API version */
 #define JPEG_LIB_VERSION 62
