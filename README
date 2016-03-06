@@ -1,4 +1,4 @@
-RWK note:  The `rwk` branch of libjpeg-turbo is modified to decompress JPEG
+thp note:  The `thp` branch of libjpeg-turbo is modified to decompress JPEG
 frames directly from Nintendo THP video streams. The decompression routine
 is designed to receive a pointer to a single THP frame and emit a YUV-420 planar
 image for direct usage by OpenGL.
