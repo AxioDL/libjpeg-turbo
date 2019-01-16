@@ -318,6 +318,7 @@ dump_buffer (working_state * state)
  * bytes can be stored in a 64-bit bit buffer before it has to be emptied.
  */
 
+#if !NINTENDO_THP_STREAM
 #define EMIT_BYTE() { \
   JOCTET c; \
   put_bits -= 8; \
@@ -326,6 +327,14 @@ dump_buffer (working_state * state)
   if (c == 0xFF)  /* need to stuff a zero byte? */ \
     *buffer++ = 0; \
  }
+#else
+#define EMIT_BYTE() { \
+  JOCTET c; \
+  put_bits -= 8; \
+  c = (JOCTET)GETJOCTET(put_buffer >> put_bits); \
+  *buffer++ = c; \
+ }
+#endif
 
 #define PUT_BITS(code, size) { \
   put_bits += size; \
