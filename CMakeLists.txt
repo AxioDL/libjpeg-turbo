@@ -53,4 +53,11 @@ add_library(libjpeg-turbo
             jidctflt.c
             jaricom.c)
 
-set(LIBJPEG_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "libjpeg-turbo include path" FORCE)
+if (NOT MSVC)
+  target_compile_options(libjpeg-turbo PRIVATE -Wno-misleading-indentation
+                         -Wno-unused-but-set-variable -Wno-unused-label
+                         -Wno-implicit-fallthrough -Wno-attributes
+                         -Wno-shift-negative-value)
+endif()
+
+target_include_directories(libjpeg-turbo PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
