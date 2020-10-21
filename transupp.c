@@ -768,9 +768,16 @@ jt_read_integer (const char ** strptr, JDIMENSION * result)
   const char * ptr = *strptr;
   JDIMENSION val = 0;
 
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wchar-subscripts"
+#endif
   for (; isdigit(*ptr); ptr++) {
     val = val * 10 + (JDIMENSION) (*ptr - '0');
   }
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
   *result = val;
   if (ptr == *strptr)
     return FALSE;		/* oops, no digits */
@@ -801,7 +808,14 @@ jtransform_parse_crop_spec (jpeg_transform_info *info, const char *spec)
   info->crop_xoffset_set = JCROP_UNSET;
   info->crop_yoffset_set = JCROP_UNSET;
 
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wchar-subscripts"
+#endif
   if (isdigit(*spec)) {
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
     /* fetch width */
     if (! jt_read_integer(&spec, &info->crop_width))
       return FALSE;
